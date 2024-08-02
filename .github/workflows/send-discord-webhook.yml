@@ -1,0 +1,17 @@
+name: Send Discord Webhook
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, closed, reopened]
+
+jobs:
+  discord-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "A new push or pull request event has occurred!"}' \
+          https://discord.com/api/webhooks/1268853514059382884/Xjw42dYjxW7rM3jqxqj35sIDCXAnEviq-UEXPLA0ATKf6uXoWLWj24IaT1_loxtc3Qyx
