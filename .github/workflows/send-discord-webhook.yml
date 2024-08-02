@@ -12,7 +12,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+            const webhookUrl = process.env.WEBHOOK_URL;
             const pullRequest = context.payload.pull_request;
             const message = {
               content: `A Pull Request has been created or updated!`,
@@ -31,4 +31,4 @@ jobs:
               body: JSON.stringify(message)
             });
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
