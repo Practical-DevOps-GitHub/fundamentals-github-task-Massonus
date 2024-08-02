@@ -1,4 +1,5 @@
 name: Send Discord Webhook
+
 on:
   pull_request:
     types: [opened, reopened]
@@ -14,8 +15,9 @@ jobs:
           script: |
             const webhookUrl = process.env.WEBHOOK_URL;
             const pullRequest = context.payload.pull_request;
+            
             const message = {
-              content: `A Pull Request has been created or updated!`,
+              content: 'A Pull Request has been created or updated!',
               embeds: [
                 {
                   title: pullRequest.title,
@@ -25,6 +27,7 @@ jobs:
                 }
               ]
             };
+
             await fetch(webhookUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
